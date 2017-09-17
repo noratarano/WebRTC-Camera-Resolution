@@ -151,9 +151,11 @@ function gum(candidate, device) {
     var constraints = {
         audio: false,
         video: {
-                deviceId: device.id ? {exact: device.id} : undefined,
-                width: {exact: candidate.width},    //new syntax
-                height: {exact: candidate.height}   //new syntax
+                // deviceId: device.id ? {exact: device.id} : undefined,
+                // width: {exact: candidate.width},    //new syntax
+                // height: {exact: candidate.height}   //new syntax
+                width: candidate.width,
+                height: candidate.height,
         }
     };
 
@@ -310,6 +312,12 @@ const quickScan = [
         "label": "UXGA",
         "width": 1600,
         "height": 1200,
+        "ratio": "4:3"
+    },
+    {
+        "label": "ID(HD)",
+        "width": 1500,
+        "height": 1125,
         "ratio": "4:3"
     },
     {
