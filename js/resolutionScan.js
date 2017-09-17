@@ -166,7 +166,7 @@ function gum(candidate, device) {
                 console.log('getUserMedia error!', error);
 
                 if (scanning) {
-                    captureResults("fail: " + error.name);
+                    captureResults(`fail: ${error.name} / ${error.message}`);
                 }
             });
     }, (stream ? 200 : 0));  //official examples had this at 200
