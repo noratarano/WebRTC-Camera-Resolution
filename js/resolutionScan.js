@@ -151,11 +151,9 @@ function gum(candidate, device) {
     var constraints = {
         audio: false,
         video: {
-                // deviceId: device.id ? {exact: device.id} : undefined,
-                // width: {exact: candidate.width},    //new syntax
-                // height: {exact: candidate.height}   //new syntax
-                width: candidate.width,
-                height: candidate.height,
+            deviceId: device.id ? {exact: device.id} : undefined,
+            width: candidate.width,
+            height: candidate.height,
         }
     };
 
@@ -166,7 +164,7 @@ function gum(candidate, device) {
                 console.log('getUserMedia error!', error);
 
                 if (scanning) {
-                    captureResults(`fail: ${error.name} / ${error.message}`);
+                    captureResults(`HARD FAIL: ${error.name} / ${error.message}`);
                 }
             });
     }, (stream ? 200 : 0));  //official examples had this at 200
@@ -193,10 +191,10 @@ function displayVideoDimensions() {
 
     if (video.videoWidth * video.videoHeight > 0) {
         if(tests[r].width + "x" + tests[r].height != video.videoWidth + "x" + video.videoHeight){
-            captureResults("fail: mismatch");
+            captureResults("SOFT FAIL: mismatch");
         }
         else{
-            captureResults("pass");
+            captureResults("PASS");
         }
     }
 }
